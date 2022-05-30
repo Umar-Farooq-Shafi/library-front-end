@@ -5,51 +5,8 @@ import axios from 'axios';
 
 import List from '../Components/List';
 
-/* imported BookData, StudentData, */
 import { StudentHeadCell } from '../interfaces/Student';
 import { BookHeadCell } from '../interfaces/Book';
-
-// function createStudentData(
-//   name: string,
-//   last_name: string,
-//   action: string,
-// ): StudentData {
-//   return {
-//     name,
-//     last_name,
-//     action,
-//   };
-// }
-
-// const studentRows = [
-//   createStudentData('Cupcake', '305', '() => {}'),
-//   createStudentData('Donut', '452', '() => {}'),
-//   createStudentData('Eclair', '262', '() => {}'),
-// ]
-
-// function createBookData(
-//   name: string,
-//   author: string,
-//   borrow_by: string,
-//   issue_date: string,
-//   return_date: string,
-//   action: string,
-// ): BookData {
-//   return {
-//     name,
-//     author,
-//     borrow_by,
-//     issue_date,
-//     return_date,
-//     action,
-//   };
-// }
-
-// const bookRows = [
-//   createBookData('Cupcake', '3.7', '67', '4.3', '4.3', '() => {}'),
-//   createBookData('Donut', '25.0', '51', '4.9', '4.3', '() => {}'),
-//   createBookData('Eclair', '16.0', '24', '6.0', '4.3', '() => {}'),
-// ];
 
 const bookHeadCells: readonly BookHeadCell[] = [
   {
@@ -121,13 +78,7 @@ export default function ShowList() {
         try {
           const { data } = await axios.get('http://127.0.0.1:8080/student');
 
-          // TODO: fix this
-          setStudentRows(
-            data?.students?.map((student: any) => ({
-              ...student,
-              name: student.first_name,
-            })),
-          );
+          setStudentRows(data?.students);
         } catch (error) {
           console.error(error);
         }
@@ -137,16 +88,7 @@ export default function ShowList() {
         try {
           const { data } = await axios.get('http://127.0.0.1:8080/book');
 
-          // TODO: Fix this
-          setBookRows(
-            data?.books?.map((book: any) => ({
-              ...book,
-              name: book.book_name,
-              borrow_by: studentRows.find(
-                (stu: any) => stu.id === book.student_id,
-              )?.name,
-            })),
-          );
+          setBookRows(data?.books);
         } catch (error) {
           console.error(error);
         }

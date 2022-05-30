@@ -19,11 +19,11 @@ export interface SimpleDialogProps {
   open: boolean;
   data: any;
   onClose: () => void;
-  callback: (data: any) => void;
+  // callback: (data: any) => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const { onClose, open, data, callback } = props;
+  const { onClose, open, data } = props;
   const [name, setName] = React.useState('');
 
   const handleClose = () => {
@@ -44,7 +44,7 @@ function SimpleDialog(props: SimpleDialogProps) {
             '& > :not(style)': { m: 1, width: 500, maxWidth: '100%' },
           }}
           onSubmit={() => {
-            callback({});
+            // callback({});
           }}
           noValidate
           autoComplete='off'>
