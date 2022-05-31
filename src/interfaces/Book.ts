@@ -14,3 +14,14 @@ export interface BookHeadCell {
     label: string;
     numeric: boolean;
 }
+
+export const bookForm = {
+    student_id: '',
+    book_name: '',
+    author: '',
+    issue_date: '',
+    return_date: '',
+}
+
+
+

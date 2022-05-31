@@ -25,6 +25,9 @@ import { Button } from '@mui/material';
 import { AddCircleOutline } from '@mui/icons-material';
 
 import SimpleDialog from '../Components/Dialog';
+import { Link } from 'react-router-dom';
+import { bookForm } from '../interfaces/Book';
+import { studentForm } from '../interfaces/Student';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -210,44 +213,16 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       {title === 'Book' ? (
         <SimpleDialog
           open={openBook}
-          data={[
-            {
-              label: 'Book Name...',
-            },
-            {
-              label: 'Author Name...',
-            },
-            {
-              label: 'Issue Date...',
-            },
-            {
-              label: 'Return Date...',
-            },
-            {
-              label: 'students',
-              student: [
-                {
-                  id: 1,
-                  name: 'John',
-                },
-              ],
-            },
-          ]}
+          values={bookForm}
+          endPoint='book'
           onClose={handleCloseBook}
         />
       ) : (
         <SimpleDialog
           open={openStudent}
-          data={[
-            {
-              label: 'First Name...',
-            },
-            {
-              label: 'Last Name...',
-            },
-          ]}
+          values={studentForm}
+          endPoint='student'
           onClose={handleCloseStudent}
-          // callback={(data) => {}}
         />
       )}
     </Toolbar>
@@ -386,7 +361,15 @@ export default function EnhancedTable({ title, rows, headCells }: any) {
                         </>
                       )}
                       <TableCell align='left'>
-                        <Button variant='contained'>Edit</Button>
+                        <Link
+                          to={`/detail/${title}/${row.id}`}
+                          style={{
+                            textDecoration: 'none',
+                          }}>
+                          <Button variant='contained' color='primary'>
+                            Edit
+                          </Button>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   );

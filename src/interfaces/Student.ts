@@ -11,3 +11,8 @@ export interface StudentHeadCell {
     label: string;
     numeric: boolean;
 }
+
+export const studentForm = {
+    first_name: '',
+    last_name: '',
+}

@@ -102,14 +102,14 @@ export default function ShowList() {
     <>
       <h1>Library management system</h1>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={6}>
           <List
             title='Student'
             rows={studentRows}
             headCells={studentHeadCells}
           />
         </Grid>
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={6}>
           <List title='Book' rows={bookRows} headCells={bookHeadCells} />
         </Grid>
       </Grid>

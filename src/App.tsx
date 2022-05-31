@@ -9,8 +9,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<List />} />
-        <Route path='/detail/:id' element={<Details />} />
+        <Route path='/'>
+          <Route index element={<List />} />
+          <Route path='detail'>
+            <Route path=':slug/:id' element={<Details />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
